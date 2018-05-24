@@ -18,13 +18,9 @@ class WelcomeView: UIViewController
      - returns:
      nil
      */
-    var defaulthour = 24
-    var defaultminute = 60
-    var defaultREVDAY = 2
-    var defaultREVHOUR = 0
-    var defaultANGOFF = Float(1.0)
-    var defaultTIMEOFF = 0
-    var defaultMODE = 1
+    
+    var firstTime=true
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -32,6 +28,18 @@ class WelcomeView: UIViewController
         self.view.backgroundColor = UIColor(patternImage:UIImage(named: background.getBackground())!)
     }
     @IBAction func checkIfNew(_ sender: UIButton) {
+       // if firstTime == true{
+        
+        //self.performSegue(withIdentifier: "firstTime", sender: self)
+       // }
+       /* else{
+        self.performSegue(withIdentifier: "notfirst", sender: self)
+        }*/
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+            if let ident = segue.identifier {
+                if ident == "first"{
+                let menuViewController = segue.destination as! SettingsViewController
         /*let file = "boring"
         let defaultinfo = "24:60:2:0:1:0:1"
         var recievedinfo=""
@@ -70,15 +78,11 @@ class WelcomeView: UIViewController
                     let dh: String = sect
                     defaultMODE = Int(dh)!
                 }
-                count = count + 1
+                else{
+                let menuViewController = segue.destination as! ViewController
+                }
             }
         }
-            catch{
-                do {
-                    try defaultinfo.write(to: fileURL, atomically: true, encoding: String.Encoding.utf8)
-                }
-                catch{}
-            }
         }*/
     }
     
